@@ -99,7 +99,7 @@
             <div class="result-item">
                 <?php
                      foreach ($data as $row) {
-                        $show = "<div>
+                        echo "<div>
                                     <p>$row[comunidad] : $row[provincia] : $row[municipios]</p>
                                     <input type='hidden' id='latitud' value='$row[latitud]'>
                                     <input type='hidden' id='longitud' value='$row[longitud]'> 

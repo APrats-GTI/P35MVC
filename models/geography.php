@@ -30,7 +30,7 @@ class Geography {
     }
 
     public function getComunidades() {
-        $sql = "SELECT nombre, id_comunidad FROM comunidades";
+        $sql = "SELECT comunidad, id FROM comunidades";
 
         $res = $this->mysqli->query($sql);
 
@@ -44,7 +44,7 @@ class Geography {
     }
 
     public function getProvincias($id) {
-        $sql = "SELECT nombre, n_provincia FROM provincias WHERE id_comunidad =  $id";
+        $sql = "SELECT provincia, id FROM provincias WHERE comunidad_id =  $id";
 
         $res = $this->mysqli->query($sql);
 

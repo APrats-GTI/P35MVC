@@ -112,7 +112,7 @@
                         <?php
                         
                             foreach ($data as $row) {
-                                echo "<option value='$row[id_comunidad]'>$row[nombre]</option>";
+                                echo "<option value='$row[id]'>$row[comunidad]</option>";
                             }
 
                         ?>
