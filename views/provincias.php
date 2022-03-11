@@ -104,13 +104,13 @@
             <hr>
 
             <div class="options-form">
-                <form action="municipios" method="post">
+                <form action="localidades" method="post">
                     <select name="provincias" id="provincias">
 
                         <?php
                             
                             foreach ($data as $row) {
-                                echo "<option value='$row[id]'>$row[provincia]</option>";
+                                echo "<option value='$row[n_provincia]'>$row[nombre]</option>";
                             }
 
                         ?>

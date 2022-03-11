@@ -6,7 +6,7 @@ class Geography {
 
     function __construct(){
 
-        $this->mysqli = new mysqli('localhost', 'root', '', 'geografia2');
+        $this->mysqli = new mysqli('localhost', 'root', '', 'geografia');
 
         if ($this->mysqli->connect_errno){
 
@@ -30,7 +30,7 @@ class Geography {
     }
 
     public function getComunidades() {
-        $sql = "SELECT comunidad, id FROM comunidades";
+        $sql = "SELECT nombre, id_comunidad FROM comunidades";
 
         $res = $this->mysqli->query($sql);
 
@@ -44,7 +44,7 @@ class Geography {
     }
 
     public function getProvincias($id) {
-        $sql = "SELECT provincia, id FROM provincias WHERE comunidad_id =  $id";
+        $sql = "SELECT nombre, n_provincia FROM provincias WHERE id_comunidad =  $id";
 
         $res = $this->mysqli->query($sql);
 
@@ -58,7 +58,7 @@ class Geography {
     }
 
     public function getMunicipios($id) {
-        $sql = "SELECT municipio, id FROM municipios WHERE provincia_id = $id";
+        $sql = "SELECT nombre, id_localidad FROM localidades WHERE n_provincia = $id";
 
         $res = $this->mysqli->query($sql);
 
@@ -72,10 +72,10 @@ class Geography {
     }
 
     public function getSummary($id) {
-        $sql = "SELECT c.comunidad AS comunidad, p.provincia AS provincia, m.municipio AS municipios, m.latitud AS latitud, m.longitud AS longitud
-                FROM comunidades c JOIN provincias p ON c.id = p.comunidad_id
-                JOIN municipios m ON p.id = m.provincia_id
-                WHERE m.id = $id;";
+        $sql = "SELECT c.nombre AS comunidad, p.nombre AS provincia, l.nombre AS localidad
+                FROM comunidades c JOIN provincias p ON c.id_comunidad = p.id_comunidad
+                JOIN localidades l ON p.n_provincia = l.n_provincia
+                WHERE l.id_Localidad = $id;";
 
         $res = $this->mysqli->query($sql);
 
@@ -86,6 +86,37 @@ class Geography {
         $rows = $res->fetch_all(MYSQLI_ASSOC);
 
         return $rows;
+    }
+
+
+    public function  lastComunidad() {
+        $sql = "SELECT MAX(id_comunidad) as max FROM comunidades";
+
+        $res = $this->mysqli->query($sql);
+
+        if (!$res) {
+            echo "<script> console.log('Result set is null: no data available'); </script>";
+        }
+
+        $row = $res->fetch_all(MYSQLI_ASSOC);
+
+        // print_r($row);
+        // echo $row[0]['max'];
+
+        return $row[0]['max'];
+    }
+
+
+    public function  newComunidad($id,$name) {
+        $sql = "INSERT INTO comunidades (id_comunidad, nombre) VALUES ('$id','$name')";
+        // echo "<p>$sql</p>";
+        $status = $this->mysqli->query($sql);
+
+        if (!$status) {
+            echo "<script> console.log('Insert done: nothing changed!'); </script>";
+        }
+
+        return $status;
     }
 
 

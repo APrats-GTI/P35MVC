@@ -4,6 +4,10 @@
 
 3. MInimal PHP router: https://www.taniarascia.com/the-simplest-php-router/ -->
 
+
+
+<!-- Aquesta pàgina és el router de l'aplicació. Aqui es declara on es troba el controlador de cada vista -->
+
 <?php
 define('CONTEXT','P35MVC');
 
@@ -15,17 +19,23 @@ $baserequest = basename($request);
 
 switch ($baserequest) {
     case CONTEXT :
-    case 'comunidades' :
+    case 'comunidades' : // En cas de que la URL sigui: https://localhost/comunidades, anirà al controlador de comunidades el qual ens dirigeix a la vista de comunidades
         require './controllers/comunidadesController.php';
         break;
     case 'provincias' :
         require './controllers/provinciasController.php';
         break;
-    case 'municipios' :
-        require './controllers/municipiosController.php';
+    case 'localidades' :
+        require './controllers/localidadesController.php';
         break;
     case 'summary' :
         require './controllers/summaryController.php';
+        break;
+    case 'comunidad' :
+        require './views/comunidad.php';
+        break;
+    case 'comunidad_new' :
+        require './controllers/comunidad_newController.php';
         break;
     default:
         http_response_code(404);

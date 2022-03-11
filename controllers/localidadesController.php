@@ -1,8 +1,9 @@
 <?php
 
-# CONECTARSE A LA BASE DE DATOS CON PDO
+# CONECTARSE A LA BASE DE DATOS USANDO PDO
 require 'models/geographyPDO.php';
 $geo = new GeographyPDO();
+
 
 # CONECTARSE A LA BASE DE DATOS USANDO MySQL
 // require 'models/geography.php';
@@ -12,13 +13,13 @@ echo "<script> console.log('Controller Provincias: Connection successful!'); </s
 
 # CONSULTAR LAS PROVINCIAS
 # TODO: Check POST exits or die
-$id = $_POST['comunidades'];
+$id = $_POST['provincias'];
 // print_r($id);
 // echo "<br>";
-$data = $geo->getProvincias($id);
+$data = $geo->getMunicipios($id);
 // print_r($data);
 
-# PASAR LOS DATOS A LA VISTA COMUNIDADES
-require 'views/provincias.php';
+# PASAR LOS DATOS A LA VISTA MUNICIPIOS
+require 'views/localidades.php';
 
 ?>

@@ -100,9 +100,7 @@
                 <?php
                      foreach ($data as $row) {
                         echo "<div>
-                                    <p>$row[comunidad] : $row[provincia] : $row[municipios]</p>
-                                    <input type='hidden' id='latitud' value='$row[latitud]'>
-                                    <input type='hidden' id='longitud' value='$row[longitud]'> 
+                                    <p>$row[comunidad] : $row[provincia] : $row[localidad]</p>
                                 </div>";
                         // print_r($row['latitud']);
                         // echo("<br>");
@@ -111,16 +109,6 @@
                 ?>
             </div>
         </section>
-        <div class="map-Container">
-            <div id="map"></div>
-        </div>
-        </div>
-        
-        <script src="js/script.js"></script>
-        <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=initMap&libraries=&v=weekly"
-      async
-    ></script>    
     </div>
 </body>
 </html>

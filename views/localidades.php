@@ -94,12 +94,12 @@
 
             <div class="options-form">
                 <form action="summary" method="post">
-                    <select name="municipios" id="municipios">
+                    <select name="localidades" id="localidades">
 
                         <?php
                             
                             foreach ($data as $row) {
-                                echo "<option value='$row[id]'>$row[municipio]</option>";
+                                echo "<option value='$row[id_localidad]'>$row[nombre]</option>";
                             }
 
                         ?>
